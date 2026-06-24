@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Hangman Game</title>
+
+    <style>
+
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:Arial, sans-serif;
+
+            background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+            background-size:cover;
+            background-position:center;
+        }
+
+        .box{
+            width:450px;
+            padding:30px;
+            text-align:center;
+            color:white;
+
+            background:rgba(0,0,0,0.75);
+            border-radius:20px;
+            box-shadow:0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        h2{
+            margin-bottom:20px;
+        }
+
+        .word{
+            font-size:36px;
+            letter-spacing:8px;
+            margin:25px 0;
+            font-weight:bold;
+        }
+
+        button{
+            padding:10px 18px;
+            margin:5px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+        }
+
+        input{
+            width:60px;
+            padding:10px;
+            text-align:center;
+            font-size:20px;
+            border:none;
+            border-radius:8px;
+        }
+
+        .msg{
+            font-size:24px;
+            margin-top:20px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+
+    <h1>🎮 Advanced Hangman Game</h1>
+
+    <h2>Score: {{ score }}</h2>
+
+    {% if not word %}
+    <form method="POST">
+        <button name="difficulty" value="Easy">Easy</button>
+        <button name="difficulty" value="Medium">Medium</button>
+        <button name="difficulty" value="Hard">Hard</button>
+    </form>
+    {% endif %}
+
+    {% if word %}
+        <div class="word">{{ word }}</div>
+
+        <h3>❤️ Lives: {{ 6 - wrong }}</h3>
+
+        {% if not win and not lose %}
+        <form method="POST">
+            <input type="text" name="letter" maxlength="1" required>
+            <button type="submit">Guess</button>
+        </form>
+        {% endif %}
+    {% endif %}
+
+    {% if win %}
+        <div class="msg">🏆 You Won!</div>
+
+        <form method="POST">
+            <button name="restart" value="yes">
+                Play Again
+            </button>
+        </form>
+    {% endif %}
+
+    {% if lose %}
+        <div class="msg">❌ Game Over</div>
+
+        <h3>Word: {{ actual_word }}</h3>
+
+        <form method="POST">
+            <button name="restart" value="yes">
+                Try Again
+            </button>
+        </form>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
