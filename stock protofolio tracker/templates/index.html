@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio Tracker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="card">
+
+        <h1>📈 Portfolio Tracker</h1>
+
+        <p class="subtitle">
+            Enter your stock details to calculate your investment value.
+        </p>
+
+        <form action="/result" method="POST">
+
+            <div class="input-box">
+
+                <label>Stock Symbol</label>
+                <input type="text" name="stock" placeholder="AAPL">
+
+                <label>Quantity</label>
+                <input type="number" name="quantity" placeholder="10">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Stock Symbol</label>
+                <input type="text" name="stock" placeholder="TSLA">
+
+                <label>Quantity</label>
+                <input type="number" name="quantity" placeholder="5">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Stock Symbol</label>
+                <input type="text" name="stock" placeholder="GOOGL">
+
+                <label>Quantity</label>
+                <input type="number" name="quantity" placeholder="8">
+
+            </div>
+
+            <button type="submit">
+                Calculate Portfolio
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

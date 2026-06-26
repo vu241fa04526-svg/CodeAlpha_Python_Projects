@@ -1,0 +1,154 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-image: url("/static/images/stock.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.main-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.card{
+    width:650px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border-radius:18px;
+    padding:30px;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:25px;
+    color:#f0f0f0;
+}
+
+.input-box{
+    background:rgba(255,255,255,0.08);
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#1565c0;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0d47a1;
+}
+
+.summary{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.summary h2{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.summary h3{
+    font-size:30px;
+    color:#ffd54f;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    background:rgba(255,255,255,0.08);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th{
+    background:#1565c0;
+    color:white;
+    padding:14px;
+}
+
+td{
+    text-align:center;
+    padding:12px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+tr:hover{
+    background:rgba(255,255,255,0.12);
+}
+
+.button-area{
+    margin-top:25px;
+}
+
+a{
+    text-decoration:none;
+}
+
+@media(max-width:700px){
+
+.card{
+    width:95%;
+    padding:20px;
+}
+
+h1{
+    font-size:28px;
+}
+
+.summary h3{
+    font-size:24px;
+}
+
+}
