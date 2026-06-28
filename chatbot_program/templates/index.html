@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SmartBot Pro</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="chat-box" id="chatbox">
+        <div class="bot">👋 Hi! I'm SmartBot Pro</div>
+    </div>
+
+    <div class="input-box">
+        <input id="input" type="text" placeholder="Type a message...">
+        <button onclick="send()">Send</button>
+    </div>
+
+</div>
+
+<script>
+function addMessage(text, type){
+    let msg = document.createElement("div");
+    msg.className = type;
+    msg.innerHTML = text;
+
+    document.getElementById("chatbox").appendChild(msg);
+    document.getElementById("chatbox").scrollTop = 999999;
+}
+
+function typing(){
+    let t = document.createElement("div");
+    t.className = "bot typing";
+    t.id = "typing";
+    t.innerHTML = "SmartBot is typing...";
+    document.getElementById("chatbox").appendChild(t);
+}
+
+function removeTyping(){
+    let t = document.getElementById("typing");
+    if(t) t.remove();
+}
+
+function send(){
+    let input = document.getElementById("input");
+    let msg = input.value.trim();
+    if(msg === "") return;
+
+    addMessage(msg, "user");
+    input.value = "";
+
+    typing();
+
+    fetch("/get", {
+        method: "POST",
+        headers: {"Content-Type":"application/x-www-form-urlencoded"},
+        body: "msg=" + encodeURIComponent(msg)
+    })
+    .then(res => res.json())
+    .then(data => {
+        setTimeout(() => {
+            removeTyping();
+            addMessage(data.reply, "bot");
+        }, 700);
+    });
+}
+
+document.getElementById("input").addEventListener("keypress", function(e){
+    if(e.key === "Enter") send();
+});
+</script>
+
+</body>
+</html>

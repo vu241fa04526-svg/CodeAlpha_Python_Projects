@@ -1,0 +1,114 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* REAL UPGRADED BACKGROUND */
+    background: url("https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* dark overlay for readability */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.container{
+    width:400px;
+    height:620px;
+    display:flex;
+    flex-direction:column;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+
+    position:relative;
+    z-index:1;
+}
+
+/* CHAT AREA */
+.chat-box{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+/* messages */
+.user, .bot{
+    padding:10px 14px;
+    border-radius:15px;
+    max-width:75%;
+    animation: fadeIn 0.25s ease;
+}
+
+.user{
+    align-self:flex-end;
+    background:#4aa3ff;
+    color:white;
+}
+
+.bot{
+    align-self:flex-start;
+    background:white;
+    color:#111;
+}
+
+/* input bar */
+.input-box{
+    display:flex;
+    padding:12px;
+    background:rgba(255,255,255,0.15);
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    outline:none;
+}
+
+button{
+    margin-left:8px;
+    padding:12px 18px;
+    border:none;
+    border-radius:25px;
+    background:#4aa3ff;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f86ff;
+}
+
+/* typing animation */
+.typing{
+    font-style:italic;
+    opacity:0.7;
+}
+
+/* animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
